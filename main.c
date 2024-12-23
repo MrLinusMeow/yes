@@ -1,10 +1,10 @@
 #include <unistd.h>
 
-void print_error(char** argv){
+void print_error(char* arg){
 	int n = 0;
-	while(argv[i][n++]);
+	while(arg[n++]);
 	write(2, "No such command: ",17);
-	write(2, argv[i], n);
+	write(2, arg, n);
 	write(2, "\n", 1);
 	_exit(-1);
 }
@@ -18,20 +18,20 @@ int main(int argc, char** argv){
 				switch(argv[i][1]){
 					case '-':
 						if(argv[i][2] == 0 || argv[i][3] == 0 || argv[i][4] == 0 || argv[i][5] == 0 ){
-							print_error(argv);
+							print_error(argv[i]);
 						}else if(argv[i][2] == 'h' && argv[i][3] == 'e' && argv[i][4] == 'l' && argv[i][5] == 'p'){
 							write(1,"help\n",5);
 							_exit(0);
 						}else if(argv[i][6] == 0 || argv[i][7] == 0 || argv[i][8] == 0){
-							print_error(argv);
+							print_error(argv[i]);
 						}else if(argv[i][2] == 'v' && argv[i][3] == 'e' && argv[i][4] == 'r' && argv[i][5] == 's' && argv[i][6] == 'i' && argv[i][7] == 'o' && argv[i][8] == 'n'){
 							write(1,"version\n",8);
 							_exit(0);
 						}else{
-							print_error(argv);
+							print_error(argv[i]);
 						}
 					default:
-						print_error(argv);
+						print_error(argv[i]);
 				}
 			default:
 				break;
